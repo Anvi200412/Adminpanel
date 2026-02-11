@@ -1,0 +1,342 @@
+.content {
+  margin-left: 220px;
+  padding: 30px;
+  min-height: 100vh;
+  background-color: #2f4254;
+}
+
+.products-page {
+  width: 100%;
+  padding: 20px;
+}
+
+.products-page h1 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+
+.filters-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: #3b5268;
+  color: #ffffff;
+  width: 220px;
+}
+
+.search-input::placeholder {
+  color: #b0c4d8;
+}
+
+.category-dropdown {
+  padding: 10px 14px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #4e647a;
+  background-color: #3b5268;
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+  width: 200px;
+}
+
+.add-product-btn {
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: none;
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.add-product-btn:hover {
+  background-color: #1f1f1f;
+  transform: translateY(-2px);
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 80px 1.6fr 1fr 1fr 120px;
+  padding: 0 18px;
+  margin-bottom: 10px;
+  color: #b0c4d8;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-row {
+  display: grid;
+  grid-template-columns: 80px 1.6fr 1fr 1fr 120px;
+  align-items: center;
+  background-color: #3b5268;
+  padding: 14px 18px;
+  border-radius: 10px;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+}
+
+.product-row img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  background-color: #2f4254;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.icon-btn.edit {
+  background: rgba(31, 142, 241, 0.18);
+  color: #1f8ef1;
+}
+
+.icon-btn.delete {
+  background: rgba(255, 77, 79, 0.18);
+  color: #ff4d4f;
+}
+
+.icon-btn:hover {
+  transform: scale(1.12);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-card {
+  background: #ffffff;
+  width: 380px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  animation: popIn 0.25s ease;
+}
+
+.modal-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-form input,
+.modal-form select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.modal-form input:focus,
+.modal-form select:focus {
+  outline: none;
+  border-color: #1f8ef1;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.save-btn {
+  background: #1f8ef1;
+  color: #ffffff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #e0e0e0;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #166bb7;
+}
+
+.cancel-btn:hover {
+  background: #cfcfcf;
+}
+
+.confirm-card {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 14px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.confirm-card h3 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.confirm-card .delete-btn {
+  background: #ff4d4f;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.confirm-card .delete-btn:hover {
+  background: #e03e41;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: none;
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #1f1f1f;
+  transform: translateY(-2px);
+}
+
+.pagination button:disabled {
+  background-color: #555555;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.page-info {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    margin-left: 0;
+    padding-top: 70px;
+  }
+
+  .filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input,
+  .category-dropdown,
+  .add-product-btn {
+    width: 100%;
+  }
+
+  .table-header {
+    display: none;
+  }
+
+  .product-row {
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 8px;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+
+  .modal-card {
+    width: 90%;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .page-info {
+    margin-top: 5px;
+  }
+}
