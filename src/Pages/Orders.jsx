@@ -9,7 +9,14 @@ function Orders() {
     fetch("https://dummyjson.com/carts")
       .then((res) => res.json())
       .then((data) => {
-        setOrders(data.carts);
+        const ordersWithStatus = data.carts.map((order) => ({
+          ...order,
+          status: ["Delivered", "Sending", "Pending"][
+            Math.floor(Math.random() * 3)
+          ],
+        }));
+
+        setOrders(ordersWithStatus);
         setLoading(false);
       })
       .catch((err) => {
@@ -18,54 +25,79 @@ function Orders() {
       });
   }, []);
 
-  if (loading) return <p style={{ padding: "20px" }}>Loading orders...</p>;
+  const handleStatusChange = (orderId, newStatus) => {
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order.id === orderId ? { ...order, status: newStatus } : order
+      )
+    );
+  };
+
+  if (loading)
+    return <p style={{ padding: "20px", fontSize: "16px" }}>Loading orders...</p>;
 
   return (
     <div className="orders-container">
       <h1>Orders</h1>
+
       {orders.length === 0 ? (
         <p>No orders found.</p>
       ) : (
-        <table className="orders-table">
-          <thead>
-            <tr>
-              <th>Order ID</th>
-              <th>User ID</th>
-              <th>Products</th>
-              <th>Total Quantity</th>
-              <th>Total Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => (
-              <tr key={order.id}>
-                <td>{order.id}</td>
-                <td>{order.userId}</td>
-                <td className="product-list">
-                  {order.products.map((p) => (
-                    <div key={p.id}>
-                      {p.title} (x{p.quantity})
-                    </div>
-                  ))}
-                </td>
-                <td>
-                  {order.products.reduce((total, p) => total + p.quantity, 0)}
-                </td>
-                <td>
-                  $
-                  {order.products.reduce(
-                    (total, p) => total + p.price * p.quantity,
-                    0
-                  )}
-                </td>
+        <div className="orders-table-wrapper">
+          <table className="orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>User ID</th>
+                <th>Products</th>
+                <th>Total Quantity</th>
+                <th>Total Price</th>
+                <th>Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {orders.map((order) => (
+                <tr key={order.id}>
+                  <td>{order.id}</td>
+                  <td>{order.userId}</td>
+                  <td className="product-list">
+                    {order.products.map((p) => (
+                      <div key={p.id}>
+                        {p.title} (x{p.quantity})
+                      </div>
+                    ))}
+                  </td>
+                  <td>
+                    {order.products.reduce((total, p) => total + p.quantity, 0)}
+                  </td>
+                  <td>
+                    $
+                    {order.products.reduce(
+                      (total, p) => total + p.price * p.quantity,
+                      0
+                    )}
+                  </td>
+                  <td>
+                    <select
+                      className={`status ${order.status.toLowerCase()}`}
+                      value={order.status}
+                      onChange={(e) =>
+                        handleStatusChange(order.id, e.target.value)
+                      }
+                    >
+                      <option value="Delivered">Delivered</option>
+                      <option value="Sending">Sending</option>
+                      <option value="Pending">Pending</option>
+                    </select>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
 }
 
 export default Orders;
-

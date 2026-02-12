@@ -1,38 +1,127 @@
-/* Orders.css */
 .orders-container {
-  padding: 20px;
-  background-color: #f4f6f8;
+  padding: 30px;
+  background-color: #3e4d64;
   min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
 }
 
 .orders-container h1 {
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 25px;
+  color: #1e1e2f;
+  font-size: 32px;
+  font-weight: 700;
 }
+
+
+.orders-table-wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 15px;
+}
+
 
 .orders-table {
   width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-collapse: separate;
+  border-spacing: 0 8px;
 }
 
 .orders-table th,
 .orders-table td {
-  padding: 12px 15px;
+  padding: 15px 12px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
 }
 
 .orders-table th {
-  background-color: #1976d2;
-  color: #fff;
+  background-color: #f1f2f3;
+  color: #0b0b0b;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;  
+  border: none;
+  border-radius: 8px 8px 0 0;
 }
 
-.orders-table tr:hover {
-  background-color: #f1f1f1;
+.orders-table tbody tr {
+  background-color: #fff;
+  transition: all 0.2s;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.orders-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .product-list div {
   margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  min-width: 100px;
+  transition: background 0.3s;
+  color: #fff;
+}
+
+.status.delivered {
+  background-color: #4caf50;
+}
+
+.status.sending {
+  background-color: #ff9800; 
+}
+
+.status.pending {
+  background-color: #f44336; 
+}
+
+
+select.status {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  padding-right: 25px;
+}
+
+
+@media (max-width: 1024px) {
+  .orders-container h1 {
+    font-size: 28px;
+  }
+
+  .orders-table th,
+  .orders-table td {
+    padding: 12px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .orders-table th,
+  .orders-table td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  .status {
+    min-width: 80px;
+    font-size: 12px;
+    padding: 4px 10px;
+  }
 }
