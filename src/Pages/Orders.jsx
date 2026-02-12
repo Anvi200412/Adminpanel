@@ -34,7 +34,11 @@ function Orders() {
   };
 
   if (loading)
-    return <p style={{ padding: "20px", fontSize: "16px" }}>Loading orders...</p>;
+    return (
+      <p style={{ padding: "20px", fontSize: "16px", textAlign: "center" }}>
+        Loading orders...
+      </p>
+    );
 
   return (
     <div className="orders-container">
@@ -58,26 +62,26 @@ function Orders() {
             <tbody>
               {orders.map((order) => (
                 <tr key={order.id}>
-                  <td>{order.id}</td>
-                  <td>{order.userId}</td>
-                  <td className="product-list">
+                  <td data-label="Order ID">{order.id}</td>
+                  <td data-label="User ID">{order.userId}</td>
+                  <td data-label="Products" className="product-list">
                     {order.products.map((p) => (
                       <div key={p.id}>
                         {p.title} (x{p.quantity})
                       </div>
                     ))}
                   </td>
-                  <td>
+                  <td data-label="Total Quantity">
                     {order.products.reduce((total, p) => total + p.quantity, 0)}
                   </td>
-                  <td>
+                  <td data-label="Total Price">
                     $
                     {order.products.reduce(
                       (total, p) => total + p.price * p.quantity,
                       0
                     )}
                   </td>
-                  <td>
+                  <td data-label="Status">
                     <select
                       className={`status ${order.status.toLowerCase()}`}
                       value={order.status}
