@@ -2,7 +2,9 @@
   margin-left: 220px;
   padding: 30px;
   min-height: 100vh;
-  background-color: #2f4254;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: 0.3s ease;
 }
 
 .products-page {
@@ -12,7 +14,7 @@
 
 .products-page h1 {
   text-align: center;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 25px;
 }
 
@@ -25,44 +27,35 @@
   flex-wrap: wrap;
 }
 
-.search-input {
+.search-input,
+.category-dropdown {
   padding: 10px 14px;
   border-radius: 6px;
-  border: none;
-  background-color: #3b5268;
-  color: #ffffff;
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--shadow);
   width: 220px;
+  transition: 0.3s ease;
 }
 
 .search-input::placeholder {
-  color: #b0c4d8;
-}
-
-.category-dropdown {
-  padding: 10px 14px;
-  font-size: 15px;
-  border-radius: 6px;
-  border: 1px solid #4e647a;
-  background-color: #3b5268;
-  color: #ffffff;
-  outline: none;
-  cursor: pointer;
-  width: 200px;
+  color: var(--text-main);
+  opacity: 0.6;
 }
 
 .add-product-btn {
   padding: 10px 18px;
   border-radius: 6px;
   border: none;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--text-accent);
+  color: #fff;
   cursor: pointer;
   font-size: 15px;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: 0.3s ease;
 }
 
 .add-product-btn:hover {
-  background-color: #1f1f1f;
+  opacity: 0.9;
   transform: translateY(-2px);
 }
 
@@ -71,9 +64,10 @@
   grid-template-columns: 80px 1.6fr 1fr 1fr 120px;
   padding: 0 18px;
   margin-bottom: 10px;
-  color: #b0c4d8;
+  color: var(--text-main);
   font-size: 14px;
   font-weight: 600;
+  opacity: 0.7;
 }
 
 .products-list {
@@ -86,24 +80,24 @@
   display: grid;
   grid-template-columns: 80px 1.6fr 1fr 1fr 120px;
   align-items: center;
-  background-color: #3b5268;
+  background-color: var(--bg-card);
   padding: 14px 18px;
   border-radius: 10px;
-  color: #ffffff;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: var(--text-main);
+  box-shadow: 0 6px 16px var(--shadow);
+  transition: 0.3s ease;
 }
 
 .product-row:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 26px var(--shadow);
 }
 
 .product-row img {
   width: 55px;
   height: 55px;
   object-fit: contain;
-  background-color: #2f4254;
+  background-color: var(--bg-main);
   padding: 6px;
   border-radius: 8px;
 }
@@ -124,27 +118,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: 0.3s ease;
 }
 
 .icon-btn.edit {
-  background: rgba(31, 142, 241, 0.18);
+  background: rgba(31, 142, 241, 0.15);
   color: #1f8ef1;
 }
 
 .icon-btn.delete {
-  background: rgba(255, 77, 79, 0.18);
+  background: rgba(255, 77, 79, 0.15);
   color: #ff4d4f;
 }
 
 .icon-btn:hover {
-  transform: scale(1.12);
+  transform: scale(1.1);
 }
 
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -153,18 +147,18 @@
 }
 
 .modal-card {
-  background: #ffffff;
+  background: var(--bg-card);
+  color: var(--text-main);
   width: 380px;
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 50px var(--shadow);
   animation: popIn 0.25s ease;
 }
 
 .modal-card h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #333;
 }
 
 .modal-form {
@@ -177,15 +171,18 @@
 .modal-form select {
   padding: 10px 12px;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
+  border: 1px solid var(--shadow);
+  background: var(--bg-main);
+  color: var(--text-main);
 }
 
 .modal-form input:focus,
 .modal-form select:focus {
   outline: none;
-  border-color: #1f8ef1;
+  border-color: var(--text-accent);
 }
+
+/* ================= MODAL ACTIONS ================= */
 
 .modal-actions {
   display: flex;
@@ -194,8 +191,8 @@
 }
 
 .save-btn {
-  background: #1f8ef1;
-  color: #ffffff;
+  background: var(--text-accent);
+  color: #fff;
   padding: 10px 16px;
   border: none;
   border-radius: 8px;
@@ -203,33 +200,36 @@
 }
 
 .cancel-btn {
-  background: #e0e0e0;
+  background: var(--bg-main);
+  color: var(--text-main);
   padding: 10px 16px;
-  border: none;
+  border: 1px solid var(--shadow);
   border-radius: 8px;
   cursor: pointer;
 }
 
 .save-btn:hover {
-  background: #166bb7;
+  opacity: 0.9;
 }
 
 .cancel-btn:hover {
-  background: #cfcfcf;
+  opacity: 0.8;
 }
 
+/* ================= CONFIRM DELETE ================= */
+
 .confirm-card {
-  background: #ffffff;
+  background: var(--bg-card);
+  color: var(--text-main);
   padding: 28px;
   border-radius: 14px;
   width: 320px;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 20px 50px var(--shadow);
 }
 
 .confirm-card h3 {
   margin-bottom: 20px;
-  color: #333;
 }
 
 .confirm-card .delete-btn {
@@ -241,9 +241,7 @@
   cursor: pointer;
 }
 
-.confirm-card .delete-btn:hover {
-  background: #e03e41;
-}
+/* ================= PAGINATION ================= */
 
 .pagination {
   display: flex;
@@ -257,44 +255,43 @@
 .pagination button {
   padding: 8px 18px;
   border-radius: 6px;
-  border: none;
-  background-color: #000000;
-  color: #ffffff;
+  border: 1px solid var(--shadow);
+  background-color: var(--bg-card);
+  color: var(--text-main);
   cursor: pointer;
   font-size: 14px;
-  font-weight: 500;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: 0.3s ease;
 }
 
 .pagination button:hover:not(:disabled) {
-  background-color: #1f1f1f;
   transform: translateY(-2px);
 }
 
 .pagination button:disabled {
-  background-color: #555555;
+  opacity: 0.5;
   cursor: not-allowed;
-  transform: none;
 }
 
 .page-info {
-  color: #ffffff;
+  color: var(--text-main);
   font-size: 14px;
-  font-weight: 500;
+  opacity: 0.7;
 }
 
+/* ================= ANIMATION ================= */
 
 @keyframes popIn {
   from {
     transform: scale(0.9);
     opacity: 0;
   }
-
   to {
     transform: scale(1);
     opacity: 1;
   }
 }
+
+/* ================= RESPONSIVE ================= */
 
 @media screen and (max-width: 768px) {
   .content {

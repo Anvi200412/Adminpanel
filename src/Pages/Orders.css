@@ -1,34 +1,33 @@
 .orders-container {
   padding: 20px;
-  background: linear-gradient(135deg, #3e546a 0%, #384d63 100%);
+  background: var(--bg-main);
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
+  color: var(--text-main);
+  transition: 0.3s ease;
 }
 
 .orders-container h1 {
   margin-bottom: 20px;
-  color: #fff;
   font-size: 32px;
   font-weight: 700;
-  letter-spacing: 1px;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
+  color: var(--text-main);
 }
 
 .orders-table-wrapper {
+  width: 100%;
   overflow-x: auto;
-  overflow-y: visible;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  background: var(--bg-card);
+  border: 1px solid var(--shadow);
+  box-shadow: 0 10px 40px var(--shadow);
   padding: 20px;
   transition: 0.3s ease;
 }
 
 .orders-table-wrapper:hover {
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 15px 50px var(--shadow);
 }
 
 .orders-table {
@@ -40,57 +39,48 @@
 .orders-table th {
   padding: 16px 14px;
   text-align: left;
-  color: #ffffff;
   font-weight: 600;
   font-size: 14px;
-  letter-spacing: 0.7px;
-  background: linear-gradient(135deg, #4e6b88, #3e546a);
-  border: none;
-}
-
-.orders-table th:first-child {
-  border-radius: 12px 0 0 12px;
-}
-
-.orders-table th:last-child {
-  border-radius: 0 12px 12px 0;
+  background: var(--bg-main);
+  color: var(--text-main);
+  border-radius: 10px;
 }
 
 .orders-table tbody tr {
-  background: rgba(255, 255, 255, 0.04);
-  transition: all 0.3s ease;
+  background: var(--bg-card);
+  transition: 0.3s ease;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  word-break: break-word;
-  overflow-wrap: anywhere;
-  white-space: normal;
-  max-height: 500px;
-  overflow-y: auto;
+  box-shadow: 0 6px 16px var(--shadow);
 }
 
 .orders-table td {
   padding: 15px 14px;
-  color: #e8e8e8;
   font-size: 14px;
   vertical-align: middle;
+  color: var(--text-main);
   word-break: break-word;
-  overflow-wrap: anywhere;
   white-space: normal;
 }
 
 .orders-table tbody tr:hover {
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.07);
-  box-shadow: 0 0 20px rgba(78, 107, 136, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 26px var(--shadow);
+}
+
+.product-list {
+  max-height: 100px; 
+  overflow-y: auto;  
+  word-break: break-word;
+  white-space: normal;
 }
 
 .product-list div {
   margin-bottom: 5px;
   font-size: 14px;
-  color: #dcdcdc;
-  max-height: 150px;
-  overflow-y: auto;
+  color: var(--text-main);
+  opacity: 0.8;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .status {
@@ -99,81 +89,69 @@
   font-weight: 600;
   font-size: 13px;
   text-align: center;
-  cursor: pointer;
   min-width: 100px;
-  transition: all 0.3s ease;
-  color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  background: transparent;
   border: none;
-  outline: none;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
+/* Status Colors */
 .status.delivered {
-  background: linear-gradient(135deg, #43a047, #2e7d32);
+  background: #28a745;
 }
-
 .status.delivered:hover {
-  box-shadow: 0 0 15px #4caf50;
+  box-shadow: 0 0 10px #28a745;
 }
 
 .status.sending {
-  background: linear-gradient(135deg, #ff9800, #ef6c00);
+  background: #ff9800;
 }
-
 .status.sending:hover {
-  box-shadow: 0 0 15px #ff9800;
+  box-shadow: 0 0 10px #ff9800;
 }
 
 .status.pending {
-  background: linear-gradient(135deg, #f44336, #c62828);
+  background: #f44336;
 }
-
 .status.pending:hover {
-  box-shadow: 0 0 15px #f44336;
+  box-shadow: 0 0 10px #f44336;
 }
 
-select.status {
-  appearance: none;
-  background: transparent;
-  color: #3f3f3f;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
-
-/* ==== Responsive ==== */
-
-/* Tablet (up to 1024px) */
+/* Tablet / small screens */
 @media (max-width: 1024px) {
+  .orders-container {
+    padding: 15px;
+  }
+
   .orders-container h1 {
     font-size: 28px;
   }
 
   .orders-table th,
   .orders-table td {
-    padding: 12px 10px;
+    padding: 12px 8px;
     font-size: 13px;
   }
 
   .status {
-    min-width: 80px;
+    min-width: 70px;
     font-size: 12px;
-    padding: 5px 10px;
+    padding: 5px 8px;
   }
 }
 
-
+/* Mobile: up to 700px */
 @media (max-width: 700px) {
-  .orders-container {
-    padding: 15px;
-  }
-
   .orders-container h1 {
     font-size: 22px;
   }
 
+  .orders-table-wrapper {
+    padding: 10px;
+  }
 
+  /* Hide table header */
   .orders-table thead {
     display: none;
   }
@@ -181,31 +159,32 @@ select.status {
   .orders-table tbody tr {
     display: block;
     margin-bottom: 15px;
+    padding: 12px;
     border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(255, 255, 255, 0.04);
-    max-height: 400px;
-    overflow-y: auto;
+    background: var(--bg-card);
+    border: 1px solid var(--shadow);
+    box-shadow: 0 4px 12px var(--shadow);
   }
 
   .orders-table td {
     display: flex;
     justify-content: space-between;
-    padding: 10px 12px;
+    padding: 8px 10px;
     font-size: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--text-main);
     word-break: break-word;
     white-space: normal;
-    color: #e8e8e8;
   }
 
   .orders-table td::before {
     content: attr(data-label);
     font-weight: 600;
-    color: #bbb;
     width: 45%;
     flex-shrink: 0;
+    color: var(--text-main);
+    opacity: 0.7;
   }
 
   .status {
@@ -214,18 +193,27 @@ select.status {
     padding: 4px 8px;
   }
 
+  .product-list {
+    max-height: 100px;
+    overflow-y: auto;
+    word-break: break-word;
+    white-space: normal;
+  }
+
   .product-list div {
     font-size: 12px;
     margin-bottom: 3px;
-    max-height: 100px;
-    overflow-y: auto;
+    color: var(--text-main);
+    opacity: 0.8;
+    word-break: break-word;
+    white-space: normal;
   }
 }
 
 @media (max-width: 480px) {
   .orders-table td {
     font-size: 11px;
-    padding: 8px 10px;
+    padding: 6px 8px;
   }
 
   .status {
