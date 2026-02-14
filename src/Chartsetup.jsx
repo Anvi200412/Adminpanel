@@ -1,4 +1,4 @@
-  // 1️⃣ Import required things from Chart.js
+  
   import {
     Chart as ChartJS,      
     CategoryScale,         
