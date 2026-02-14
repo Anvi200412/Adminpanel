@@ -36,17 +36,17 @@
     transform: rotate(360deg);
   }
 }
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Sidebar is FIXED, so app flex use nathi */
+
 .app {
   display: flex;
   min-height: 100vh;
-  background-color: #2c3e50; /* same as sidebar background */
+  background-color: #2c3e50; 
 }
 
 
@@ -54,5 +54,32 @@
   margin-left: 220px;
   padding: 30px;
   min-height: 100vh;
-  background-color: transparent; /* or same dark color */
+  background-color: transparent; 
+} */
+
+
+
+.app {
+  display: flex;
+  min-height: 100vh;
 }
+
+.content {
+  flex: 1;
+  padding: 30px;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .content {
+    padding: 20px;
+  }
+}
+
+
+
+

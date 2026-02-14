@@ -9,12 +9,11 @@ export const ThemeProvider = ({ children }) => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  const setLightTheme = () => setTheme("light");
+  const setDarkTheme = () => setTheme("dark");
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, setLightTheme, setDarkTheme }}>
       {children}
     </ThemeContext.Provider>
   );

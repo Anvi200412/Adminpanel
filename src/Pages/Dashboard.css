@@ -1,3 +1,4 @@
+/* ==================== RESET & BASIC ==================== */
 * {
   margin: 0;
   padding: 0;
@@ -6,26 +7,34 @@
 
 body {
   font-family: Arial, sans-serif;
-  overflow-x: hidden;
+  overflow-x: hidden; /* prevent horizontal scroll */
   transition: 0.3s ease;
 }
 
+/* ==================== COLOR VARIABLES ==================== */
 :root {
   --bg-main: #2f4254;
   --bg-card: #3e546a;
   --text-main: #ffffff;
-  --text-accent: #1abc9c;
+  --text-light: #ffffff;
   --shadow: rgba(0, 0, 0, 0.25);
+  --accent-users: #1abc9c;
+  --accent-products: #3498db;
+  --accent-orders: #f39c12;
 }
 
 [data-theme="light"] {
   --bg-main: #f4f6f9;
   --bg-card: #ffffff;
-  --text-main: #222222;   /* All text uses this */
-  --text-accent: #3498db; /* card numbers / highlights */
+  --text-main: #222222;
+  --text-light: #222222;
   --shadow: rgba(0, 0, 0, 0.1);
+  --accent-users: #1abc9c;
+  --accent-products: #3498db;
+  --accent-orders: #f39c12;
 }
 
+/* ==================== DASHBOARD ==================== */
 .dashboard {
   width: 100%;
   min-height: 100vh;
@@ -33,6 +42,7 @@ body {
   background: var(--bg-main);
   color: var(--text-main);
   transition: 0.3s ease;
+  overflow-x: hidden;
 }
 
 .dashboard h1 {
@@ -41,6 +51,7 @@ body {
   color: var(--text-main);
 }
 
+/* ==================== CARDS ==================== */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -60,6 +71,7 @@ body {
 
 .card:hover {
   transform: translateY(-8px);
+  box-shadow: 0 15px 30px var(--shadow);
 }
 
 .card-content {
@@ -77,144 +89,87 @@ body {
 .card p {
   font-size: 34px;
   font-weight: bold;
-  color: var(--text-accent);
 }
+
+/* CARD SPECIFIC COLORS */
+.card-users p, .card-users .card-icon { color: var(--accent-users); }
+.card-products p, .card-products .card-icon { color: var(--accent-products); }
+.card-orders p, .card-orders .card-icon { color: var(--accent-orders); }
 
 .card-icon {
   font-size: 50px;
-  opacity: 0.85;
+  opacity: 0.75;
 }
 
+/* ==================== CHARTS ==================== */
 .charts {
   margin-top: 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* responsive */
   gap: 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* Chart Card */
 .chart-card {
   background: var(--bg-card);
-  padding: 25px;
   border-radius: 18px;
+  padding: 20px;
   box-shadow: 0 10px 25px var(--shadow);
-  height: 450px;          
   display: flex;
   flex-direction: column;
+  height: 450px;          /* default desktop height */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   transition: 0.3s ease;
 }
 
-.chart-card:hover {
-  transform: translateY(-8px);
+.chart-card > .chart-wrapper {
+  flex: 1;                /* makes chart fill available vertical space */
+  min-height: 0;          /* important for flex children */
+  position: relative;     /* ensures canvas fills container */
 }
 
-.chart-card h3 {
+.chart-title {
+  color: #7d7c7c;
   margin-bottom: 20px;
-  font-size: 18px;
-  color: var(--text-main);
+  font-weight: 600;
+  font-size: 20px;
 }
 
-.chart-card > div {
-  flex: 1;
-  min-height: 0;
-}
+/* ==================== RESPONSIVE MEDIA QUERIES ==================== */
 
-.recharts-responsive-container,
-.chart-card canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.recharts-cartesian-axis-tick-value {
-  fill: var(--text-main);
-}
-
-.recharts-tooltip-label,
-.recharts-tooltip-item {
-  fill: var(--text-main);
-}
-
+/* Large tablets / small desktops */
 @media (max-width: 1024px) {
-  .dashboard {
-    padding: 25px;
-  }
-
-  .cards {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
-
-  .card {
-    min-height: 180px;
-  }
-
-  .card p {
-    font-size: 28px;
-  }
-
-  .charts {
-    grid-template-columns: 1fr;
-  }
-
-  .chart-card {
-    height: 380px;
-  }
+  .dashboard { padding: 25px; }
+  .cards { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .card { min-height: 180px; }
+  .card p { font-size: 28px; }
+  .charts { grid-template-columns: 1fr; gap: 25px; }
+  .chart-card { height: 400px; padding: 18px; }
+  .chart-title { font-size: 18px; }
 }
 
+/* Tablets / portrait tablets */
 @media (max-width: 768px) {
-  .dashboard {
-    padding: 18px;
-  }
-
-  .dashboard h1 {
-    font-size: 22px;
-  }
-
-  .cards {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .card {
-    min-height: 160px;
-    padding: 20px;
-  }
-
-  .card p {
-    font-size: 24px;
-  }
-
-  .card-icon {
-    font-size: 40px;
-  }
-
-  .charts {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .chart-card {
-    height: 350px;
-    padding: 20px;
-  }
+  .dashboard { padding: 18px; }
+  .dashboard h1 { font-size: 22px; }
+  .cards { grid-template-columns: 1fr; gap: 18px; }
+  .card { min-height: 160px; padding: 20px; }
+  .card p { font-size: 24px; }
+  .card-icon { font-size: 40px; }
+  .charts { gap: 20px; }
+  .chart-card { height: 350px; padding: 15px; }
+  .chart-title { font-size: 16px; }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
-  .card h3 {
-    font-size: 14px;
-  }
-
-  .card p {
-    font-size: 20px;
-  }
-
-  .card-icon {
-    font-size: 32px;
-  }
-
-  .chart-card {
-    height: 300px;
-  }
-
-  .chart-card h3 {
-    font-size: 14px;
-  }
+  .card h3 { font-size: 14px; }
+  .card p { font-size: 20px; }
+  .card-icon { font-size: 32px; }
+  .chart-card { height: 300px; padding: 12px; }
+  .chart-title { font-size: 14px; }
 }

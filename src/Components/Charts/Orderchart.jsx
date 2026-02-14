@@ -63,7 +63,7 @@ function OrderChart() {
           size: 18, 
           weight: "bold",
         },
-        color: "#f9f7f6", 
+        color: '#7d7c7c', 
       },
       tooltip: {
         enabled: true,

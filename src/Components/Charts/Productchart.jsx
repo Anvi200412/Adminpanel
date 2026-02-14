@@ -38,7 +38,7 @@ function ProductChart() {
   plugins: {
     legend: {
       labels: {
-        color: "white",
+        color:'#7d7c7c',
         font: {
           size: 25,
           weight: "bold"

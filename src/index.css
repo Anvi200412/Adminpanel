@@ -11,31 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-:root {
-  --bg-main: #f4f6f9;       /* light theme */
-  --bg-card: #ffffff;
-  --bg-sidebar: #1f2937;
-  --text-main: #222;
-  --text-light: #ffffff;
-}
-
-[data-theme="dark"] {
-  --bg-main: #111827;       /* dark theme */
-  --bg-card: #1f2937;
-  --bg-sidebar: #0f172a;
-  --text-main: #f9fafb;
-  --text-light: #ffffff;
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: var(--bg-main);
+  font-family: Arial, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ===== LIGHT (DEFAULT) ===== */
+:root {
+  --bg-main: #f4f6f9;
+  --bg-card: #ffffff;
+  --text-main: #222222;
+  --text-accent: #3498db;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* ===== DARK ===== */
+[data-theme="dark"] {
+  --bg-main: #1e293b;
+  --bg-card: #334155;
+  --text-main: #f1f5f9;
+  --text-accent: #1abc9c;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background: var(--bg-main);
   color: var(--text-main);
 }
 
-
-* {
-  box-sizing: border-box;
-}
 
 
 
