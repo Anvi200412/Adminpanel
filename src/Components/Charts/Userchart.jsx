@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -12,22 +12,19 @@ import {
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 function UserMonthlyBarChart() {
-  const [totalUsers, setTotalUsers] = useState(0);
-
-  useEffect(() => {
-    fetch("https://dummyjson.com/users")
-      .then((res) => res.json())
-      .then((data) => setTotalUsers(data.total))
-      .catch((err) => console.error(err));
-  }, []);
-
   const totalPerMonth = [30, 25, 35, 28, 32, 26, 32];
   const activePerMonth = [20, 15, 22, 18, 20, 16, 19];
 
   // Get CSS variables for theme and accents
-  const themeText = getComputedStyle(document.documentElement).getPropertyValue("--text-main").trim();
-  const accentUsers = getComputedStyle(document.documentElement).getPropertyValue("--accent-users").trim();
-  const accentProducts = getComputedStyle(document.documentElement).getPropertyValue("--accent-products").trim();
+  const themeText = getComputedStyle(document.documentElement)
+    .getPropertyValue("--text-main")
+    .trim();
+  const accentUsers = getComputedStyle(document.documentElement)
+    .getPropertyValue("--accent-users")
+    .trim();
+  const accentProducts = getComputedStyle(document.documentElement)
+    .getPropertyValue("--accent-products")
+    .trim();
 
   const data = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
@@ -35,7 +32,7 @@ function UserMonthlyBarChart() {
       {
         label: "Total Users",
         data: totalPerMonth,
-        backgroundColor: accentUsers || "rgba(26, 188, 156, 0.8)", // green
+        backgroundColor: accentUsers || "rgba(26, 188, 156, 0.8)",
         borderRadius: 6,
         barPercentage: 0.45,
         categoryPercentage: 0.6,
@@ -43,7 +40,7 @@ function UserMonthlyBarChart() {
       {
         label: "Active Users",
         data: activePerMonth,
-        backgroundColor: accentProducts || "rgba(52, 152, 219, 0.8)", // blue
+        backgroundColor: accentProducts || "rgba(52, 152, 219, 0.8)",
         borderRadius: 6,
         barPercentage: 0.45,
         categoryPercentage: 0.6,
@@ -53,27 +50,14 @@ function UserMonthlyBarChart() {
 
   const options = {
     responsive: true,
-    maintainAspectRatio: false,  // critical for filling container height
+    maintainAspectRatio: false,
     plugins: {
-      legend: {
-        position: "top",
-        labels: { color: themeText },
-      },
-      tooltip: {
-        bodyColor: themeText,
-        titleColor: themeText,
-      },
+      legend: { position: "top", labels: { color: themeText } },
+      tooltip: { bodyColor: themeText, titleColor: themeText },
     },
     scales: {
-      y: {
-        beginAtZero: true,
-        ticks: { color: accentProducts || "rgba(52, 152, 219, 0.8)" },
-        grid: { color: "rgba(150,150,150,0.2)" },
-      },
-      x: {
-        ticks: { color: accentUsers || "rgba(26, 188, 156, 0.8)" },
-        grid: { display: false },
-      },
+      y: { beginAtZero: true, ticks: { color: accentProducts }, grid: { color: "rgba(150,150,150,0.2)" } },
+      x: { ticks: { color: accentUsers }, grid: { display: false } },
     },
   };
 

@@ -1,4 +1,4 @@
-import {Chart as ChartJS, CategoryScale,PointElement, LinearScale, LineElement,Title,Tooltip,Legend,Filler} from "chart.js";
+import {Chart as ChartJS, CategoryScale,PointElement, LinearScale, LineElement,Title,Tooltip,Legend} from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import { color } from "chart.js/helpers";
